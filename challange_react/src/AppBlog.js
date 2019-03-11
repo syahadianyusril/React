@@ -12,7 +12,7 @@ class App extends Component {
       <div>
         <Header />
         <Search />
-        <div class="container">
+        <div className="container">
             <div class="row">
                 <Blogcontent />
                 <Blogmenu />

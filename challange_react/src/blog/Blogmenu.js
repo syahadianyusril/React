@@ -3,13 +3,13 @@ import React, { Component } from 'react';
 class Blogmenu extends Component {
   render() {
     return (
-      <div class="col-md-4">
-        <div class="card my-4">
-          <h5 class="card-header bg-primary" style={{color:"white"}}>Berita Terkini</h5>
-          <div class="card-body">
-            <div class="row">
-              <div class="">
-                <ul class="list-unstyled mb-0">
+      <div className="col-md-4">
+        <div className="card my-4">
+          <h5 className="card-header bg-primary" style={{color:"white"}}>Berita Terkini</h5>
+          <div className="card-body">
+            <div className="row">
+              <div className="">
+                <ul className="list-unstyled mb-0">
                   <li>
                     <a href="https://www.merdeka.com/uang/bea-cukai-musnahkan-247-barang-salahi-aturan-impor-nilainya-rp-182-juta.html">- Bea Cukai Musnahkan 247 Barang Salahi Aturan Impor, Nilainya Rp 182 Juta</a>
                   </li>

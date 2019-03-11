@@ -7,9 +7,9 @@ import AppContact from './AppContact';
 import AppBlog from './AppBlog';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-ReactDOM.render(<AppGallery />, document.getElementById('root'));
-ReactDOM.render(<AppContact />, document.getElementById('root'));
+// ReactDOM.render(<App />, document.getElementById('root'));
+// ReactDOM.render(<AppGallery />, document.getElementById('root'));
+// ReactDOM.render(<AppContact />, document.getElementById('root'));
 ReactDOM.render(<AppBlog />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
