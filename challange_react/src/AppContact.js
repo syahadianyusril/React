@@ -6,7 +6,6 @@ class AppGallery extends Component {
   render() {
     return (
       <div>
-
         <Contact />
       </div>
     );
