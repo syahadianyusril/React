@@ -14,8 +14,8 @@ class App extends Component {
         <Search />
         <div class="container">
             <div class="row">
-                <Blogmenu />
                 <Blogcontent />
+                <Blogmenu />
             </div>
         </div>
         <Footer />
