@@ -5,6 +5,8 @@ import Search from './component/Search.js'
 import Blogcontent from './blog/Blogcontent.js'
 import Blogmenu from './blog/Blogmenu.js'
 import axios from 'axios'
+import Navigation from './component/Navigation.js';
+import { Redirect } from "react-router-dom";
 
 const imgNull = 0;
 
@@ -13,12 +15,14 @@ const keyApi = "79ea232ad60645a8a122c07c03321932";
 const search = "google"
 const country = "us"
 
+
 // endpoint semua berita
 const urlHeadline = baseUrl + "everything?q=" + search + "&apiKey=" + keyApi ;
-// endopoint headlines
+// endpoint headlines
 const urlHeadlineNew = baseUrl + "top-headlines?country=" + country + "&apiKey=" + keyApi ;
+// 
 
-class App extends Component {
+class AppBlog extends Component {
   constructor (props){
     super(props);
     this.state = {
@@ -43,13 +47,90 @@ class App extends Component {
     });
   }
 
-  render() {
-    const {listNews, listNewsNew,username, isLogin } = this.state;
+  handleInputChange = e => {
+    console.log("event", e.target.value);
+    let value = e.target.value;
 
+    this.setState(
+      {
+        search : value
+      },
+      () => {
+        this.searchNews(value)
+      }
+    );
+  };
+
+  handleClick1 = e => {
+    console.log("event", e);
+    let Sports = "Sports"
+    this.setState(
+      () => {
+        this.searchCategory(Sports);
+      }
+    )
+  }
+  handleClick2 = e => {
+    console.log("event", e);
+    let Lifestyle = "Lifestyle"
+    this.setState(
+      () => {
+        this.searchCategory(Lifestyle);
+      }
+    )
+  }
+  handleClick3 = e => {
+    console.log("event", e);
+    let Health = "Health"
+    this.setState(
+      () => {
+        this.searchCategory(Health);
+      }
+    )
+  }
+
+  searchCategory = async value => {
+    console.log("searchCategory", value);
+    const self = this ;
+    try {
+      const response = await axios.get(
+        baseUrl + "everything?q=" + value + "&apiKey=" + keyApi
+      )
+      console.log(response);
+      self.setState({listNews: response.data.articles})
+    }catch (error){
+      console.log(error);
+    }
+  }
+
+  searchNews = async keyword => {
+    console.log("search News", keyword)
+    const self = this;
+
+    if (keyword.length > 2){
+      try {
+        const response = await axios.get(
+          baseUrl + "everything?q=" + keyword + "&apiKey=" + keyApi
+        );
+        console.log(response);
+        self.setState({listNews:response.data.articles})        
+      }
+      catch (error) {
+        console.error(error);
+      }
+    } 
+  }
+
+  render() {
+    const {listNews, listNewsNew, username, isLogin } = this.state;
+    const is_login = JSON.parse(localStorage.getItem("is_login"));
+
+    if (is_login === null) {
+      return <Redirect to={{pathname: "/signin"}}/>;
+    }
     return (
       <div>
-        <Header />
-        <Search />
+        <Search doSearch={this.handleInputChange} doClick1={this.handleClick1} doClick2={this.handleClick2} doClick3={this.handleClick3}/>
         <div className="container">
             <div class="row">
                 <div className="col-md-4 my-4">
@@ -76,4 +157,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default AppBlog;

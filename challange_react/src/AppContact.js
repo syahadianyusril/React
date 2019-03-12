@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Contact from './contact-us/Contact-us.js'
 
-class AppGallery extends Component {
+class AppContact extends Component {
   render() {
     return (
       <div>
@@ -12,4 +12,4 @@ class AppGallery extends Component {
   }
 }
 
-export default AppGallery;
+export default AppContact;
