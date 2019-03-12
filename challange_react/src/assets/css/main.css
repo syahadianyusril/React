@@ -257,3 +257,7 @@ img.image1{
 .contact-logo-position {
     margin: 300px 0 0 175px;
 }
+
+#no-border {
+    border-radius: 0;
+}
