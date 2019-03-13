@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
-import Header from './component/Header.js'
+import React, {Component}from 'react';
 import Footer from './component/Footer.js'
-import Search from './component/Search.js'
 import Banner from './index/Banner.js'
 import Info from './index/Info.js'
-import Navigation from './component/Navigation.js';
 import { Redirect } from "react-router-dom";
+import { connect } from "unistore/react";
+import { withRouter } from "react-router-dom";
 
-const App = props => {
-  const is_login = JSON.parse(localStorage.getItem("is_login"));
-
-    if (is_login === null) {
+class App extends Component {
+  render () {
+    if (!this.props.is_login) {
       return <Redirect to={{pathname: "/signin"}}/>;
     }
     else {
@@ -21,8 +19,10 @@ const App = props => {
           <Footer />
         </div>
       );
-    }  
-  }
+    }
+  }    
+}
 
-
-export default App;
+export default connect(
+  "is_login"
+)(withRouter(App));
